@@ -21,6 +21,4 @@ Route::get('/', function() {
    return view('home');
 });
 
-Route::post('pdf', function() {
-   dd(request()->all());
-});
+Route::post('pdf', 'PDFGeneratorController@store');
