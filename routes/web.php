@@ -20,3 +20,7 @@ Route::get('/', function () {
 Route::get('/', function() {
    return view('home');
 });
+
+Route::post('pdf', function() {
+   dd(request()->all());
+});

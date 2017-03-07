@@ -119,6 +119,8 @@
         <!-- START - Contact Form -->
       <form id="blockchain" name="blockchain" method="POST" action="/pdf" data-name="Blockchain Form">
 
+         {{ csrf_field() }}
+
          <div class="row">
 
                 <!-- Full name -->
