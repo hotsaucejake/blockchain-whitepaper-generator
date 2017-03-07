@@ -22,3 +22,10 @@ Route::get('/', function() {
 });
 
 Route::post('pdf', 'PDFGeneratorController@store');
+
+Route::get('pdftest', function(){
+   Fpdf::AddPage();
+   Fpdf::SetFont('Courier', 'B', 18);
+   Fpdf::Cell(50, 25, 'Hello World!');
+   Fpdf::Output();
+});
