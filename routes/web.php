@@ -21,11 +21,20 @@ Route::get('/', function() {
    return view('home');
 });
 
-Route::post('pdf', 'PDFGeneratorController@store');
+Route::post('pdf', 'PDFGeneratorController@generate');
 
-Route::get('pdftest', function(){
+/*
+Route::post('pdf', function(){
+   // dd(request()->all());
+   // echo request('name');
+   // echo request('email-address');
+   // echo request('protocol');
+   // echo request('coin');
+   // echo request('title');
+
    Fpdf::AddPage();
    Fpdf::SetFont('Courier', 'B', 18);
-   Fpdf::Cell(50, 25, 'Hello World!');
+   Fpdf::Cell(50, 25, request('protocol'));
    Fpdf::Output();
 });
+*/
