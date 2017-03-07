@@ -136,7 +136,7 @@
                 <div class="col-xs-12 col-sm-6 col-lg-6">
                    <div class="form-group">
                       <label for="email" class="small">Email</label>
-                        <input type="email" id="email" class="form form-control" placeholder="Default: (blank)" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Default: (blank)'" name="email-address" data-name="Email Address">
+                        <input type="email" id="email" class="form form-control" placeholder="Default: (blank)" onfocus="this.placeholder = ''" onblur="this.placeholder = 'Default: (blank)'" name="email" data-name="Email Address">
                     </div>
                 </div>
 
