@@ -179,15 +179,10 @@
                           </label>
                      </div>
                      <div class="form-check">
-                         <label class="form-check-label">
-                           <input class="form-check-input" type="checkbox" id="lightning" name="lightning" value="1"> <strong>The Bitcoin Lightning Network:</strong> Scalable Off-Chain Instant Payments
-                         </label>
-                    </div>
-                    <div class="form-check">
-                        <label class="form-check-label">
-                          <input class="form-check-input" type="checkbox" id="tumblebit" name="tumblebit" value="1"> <strong>TumbleBit:</strong> An Untrusted Bitcoin-Compatible Anonymous Payment Hub
-                        </label>
-                   </div>
+                          <label class="form-check-label">
+                            <input class="form-check-input" type="checkbox" id="ripple" name="ripple" value="1"> <strong>The Ripple Protocol</strong> Consensus Algorithm
+                          </label>
+                     </div>
                      <div class="form-check">
                           <label class="form-check-label">
                             <input class="form-check-input" type="checkbox" id="ethereum" name="ethereum" value="1"> <strong>Ethereum:</strong> A Secure Decentralised Generalised Transaction Ledger
@@ -204,10 +199,18 @@
                           </label>
                      </div>
                      <div class="form-check">
-                          <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" id="enigma" name="enigma" value="1"> <strong>Enigma:</strong> Decentralized Computation Platform with Guaranteed Privacy
-                          </label>
-                     </div>
+                         <label class="form-check-label">
+                           <input class="form-check-input" type="checkbox" id="lightning" name="lightning" value="1"> <strong>The Bitcoin Lightning Network:</strong> Scalable Off-Chain Instant Payments
+                         </label>
+                    </div>
+                    <div class="form-check">
+                        <label class="form-check-label">
+                          <input class="form-check-input" type="checkbox" id="tumblebit" name="tumblebit" value="1"> <strong>TumbleBit:</strong> An Untrusted Bitcoin-Compatible Anonymous Payment Hub
+                        </label>
+                   </div>
+                     
+                     
+                     
 
 
 

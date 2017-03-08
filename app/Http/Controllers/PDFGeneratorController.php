@@ -17,19 +17,12 @@ class PDFGeneratorController extends Controller
     {
         //dd(request()->all());
         // if(request('bitcoin')){ dd(request()->all()); }
+        $name = request('name');
+        if (empty(request('name'))) { $name = 'Anonymous'; }
 
-        if (empty(request('name'))) {
-           $name = 'Anonymous';
-        } else {
-           $name = request('name');
-        }
+        $title = $this->titleGenerator($request);
 
-        if (empty(request('title'))) {
-           // NULL title handler
-           $title = 'Globally Secured Processes by Immutable Audit Trails on a Pseudo-Anonymous Privacy-Centric Open-Source Next-Generation Data Preservation Smart Contract Prediction Market Network and a Decentralized Peer-to-Peer Electronic Federated Application Platform Model for a Generalized Internet-Level Database Transaction Ledger System by Consensus Protocol';
-        } else {
-           $title = request('title');
-        }
+
 
         $pdf = new BlockchainPDF();
         $pdf->setTitle(request('protocol'));
@@ -39,12 +32,56 @@ class PDFGeneratorController extends Controller
 
         $pdf->SetFont('Times', '', 12);
         $pdf->MultiCell(0, 6, $title . '.  ' . $title . '.  ' . $title . '.', 0, 'J');
-        $pdf->MultiCell(0, 6, $title . '.  ' . $title . '.  ' . $title . '.', 0, 'J');
-        $pdf->MultiCell(0, 6, $title . '.  ' . $title . '.  ' . $title . '.', 0, 'J');
-        $pdf->MultiCell(0, 6, $title . '.  ' . $title . '.  ' . $title . '.', 0, 'J');
 
         $pdf->Output();
 
     }
+    
+    protected function titleGenerator(Request $request){
+      $defaultTitle = 'Secure Untrusted Anonymous Decentralised Generalised One-time Ring Signature Peer-to-Peer Scalable Off-Chain Untraceable Electronic Instant Cash System and MimbleWimble Transaction Ledger Consensus Algorithm Payment Hub';
+      
+      if(empty(request('bitcoin'))){
+         $words = array("Peer-to-Peer ", "Electronic ", "Cash ", "System ");
+         $defaultTitle = str_replace($words, "", $defaultTitle);
+      }
+      if(empty(request('ripple'))){
+         $words = array("Consensus ", "Algorithm ");
+         $defaultTitle = str_replace($words, "", $defaultTitle);
+      }
+      if(empty(request('ethereum'))){
+         $words = array("Secure ", "Decentralised ", "Generalised ", "Transaction ", "Ledger ");
+         $defaultTitle = str_replace($words, "", $defaultTitle);
+      }
+      if(empty(request('cryptonote'))){
+         $words = array("Untraceable ", "One-time Ring Signature ");
+         $defaultTitle = str_replace($words, "", $defaultTitle);
+      }
+      if(empty(request('mimblewimble'))){
+         $defaultTitle = str_replace("MimbleWimble ", "", $defaultTitle);
+      }
+      if(empty(request('lightning'))){
+         $words = array("Scalable Off-Chain", "Instant ");
+         $defaultTitle = str_replace($words, "", $defaultTitle);
+      }
+      if(empty(request('tumblebit'))){
+         $words = array("Untrusted Anonymous ", "Payment Hub");
+         $defaultTitle = str_replace($words, "", $defaultTitle);
+      }
+
+      if(empty(request('ripple')) && empty(request('tumblebit')) && empty(request('mimblewimble')) && empty(request('ethereum'))){
+         $defaultTitle = str_replace(" and", "", $defaultTitle);
+      }
+      if(empty(request('bitcoin')) && 
+         empty(request('ripple')) && 
+         empty(request('cryptonote')) && 
+         empty(request('tumblebit')) && 
+         empty(request('lightning')) && 
+         empty(request('mimblewimble')) && 
+         empty(request('ethereum'))){
+         $defaultTitle = 'This paper contains my complete knowledge of the Blockchain';
+      }
+      
+      return $defaultTitle;
+   }
 
 }
