@@ -21,7 +21,8 @@ class PDFGeneratorController extends Controller
         if (empty(request('name'))) { $name = 'Anonymous'; }
 
         $title = $this->titleGenerator($request);
-
+        
+        $whitepapers = include(app_path().'/whitepapers.php');
 
 
         $pdf = new BlockchainPDF();
@@ -31,7 +32,8 @@ class PDFGeneratorController extends Controller
         $pdf->CoverPage($name, request('email'), request('protocol'), $title);
 
         $pdf->SetFont('Times', '', 12);
-        $pdf->MultiCell(0, 6, $title . '.  ' . $title . '.  ' . $title . '.', 0, 'J');
+        $pdf->MultiCell(0, 6, getcwd(), 0, 'J');
+        $pdf->MultiCell(0, 6, print_r($whitepapers, true), 0, 'J');
 
         $pdf->Output();
 
@@ -60,7 +62,7 @@ class PDFGeneratorController extends Controller
          $defaultTitle = str_replace("MimbleWimble ", "", $defaultTitle);
       }
       if(empty(request('lightning'))){
-         $words = array("Scalable Off-Chain", "Instant ");
+         $words = array("Scalable Off-Chain ", "Instant ");
          $defaultTitle = str_replace($words, "", $defaultTitle);
       }
       if(empty(request('tumblebit'))){
