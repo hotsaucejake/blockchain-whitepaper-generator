@@ -17,13 +17,23 @@ class PDFGeneratorController extends Controller
     {
         //dd(request()->all());
         // if(request('bitcoin')){ dd(request()->all()); }
+        $whitepaper = include(app_path().'/Whitepapers/template.php');
+        
+        if(request('bitcoin')){
+           $bitcoin = include(app_path().'/Whitepapers/bitcoin.php');
+           $whitepaper = array_merge_recursive($whitepaper, $bitcoin);
+        }
+        if(request('ethereum')){
+           $ethereum = include(app_path().'/Whitepapers/ethereum.php');
+           $whitepaper = array_merge_recursive($whitepaper, $ethereum);
+        }
+        
+        
         $name = request('name');
         if (empty(request('name'))) { $name = 'Anonymous'; }
 
         $title = $this->titleGenerator($request);
         
-        $whitepapers = include(app_path().'/whitepapers.php');
-
 
         $pdf = new BlockchainPDF();
         $pdf->setTitle(request('protocol'));
@@ -32,8 +42,27 @@ class PDFGeneratorController extends Controller
         $pdf->CoverPage($name, request('email'), request('protocol'), $title);
 
         $pdf->SetFont('Times', '', 12);
-        $pdf->MultiCell(0, 6, getcwd(), 0, 'J');
-        $pdf->MultiCell(0, 6, print_r($whitepapers, true), 0, 'J');
+        
+        foreach($whitepaper as $section => $content){
+           $pdf->Ln(6); // add spacing above section titles
+           $pdf->SetFont('Times', 'B', 14); // make the font bigger and bold
+           if(!empty($content)){ $pdf->Cell(0, 6, $section, 0, 1, 'L'); } // print section title, ignore sections without content
+           $pdf->SetFont('Times', '', 12); // change font back to normal
+           
+           foreach($content as $paragraphs => $paragraph){
+             if(is_array($paragraph)){ // paragraph is code or img
+                if(isset($paragraph['img'])){ // it's an image
+                   $pdf->Image(getcwd().$paragraph['img']);
+                }
+                // if(isset($paragraph['code'])){ } // if code is set
+             } else {
+                $pdf->MultiCell(0, 6, $paragraph, 0, 'J'); // print the paragraph
+             }
+          }
+        }
+        
+             
+        
 
         $pdf->Output();
 
