@@ -96,7 +96,10 @@ class PDFGeneratorController extends Controller
          $whitepaper = array_merge_recursive($whitepaper, $ethereum);
       }
       if(request('cryptonote')){ }
-      if(request('mimblewimble')){ }
+      if(request('mimblewimble')){
+         $mimblewimble = include(app_path().'/Whitepapers/mimblewimble.php');
+         $whitepaper = array_merge_recursive($whitepaper, $mimblewimble);
+      }
       if(request('lightning')){ }
       if(request('tumblebit')){ }
 

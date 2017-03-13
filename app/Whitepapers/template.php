@@ -11,6 +11,10 @@ return [
    'Bitcoin As A State Transition System' => [],
 
    'Transactions' => [],
+   
+   'Confidential Transactions and OWAS' => [],
+   
+   'Merging Transactions Across Blocks' => [],
 
    'Timestamp Server' => [],
 
@@ -71,6 +75,10 @@ return [
    'Scalability' => [],
 
    'Calculations' => [],
+   
+   'Questions and Intuition' => [],
+   
+   'Future Research' => [],
 
    'Conclusion' => [],
 

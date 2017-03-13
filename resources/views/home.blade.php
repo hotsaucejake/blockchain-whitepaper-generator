@@ -195,7 +195,7 @@
                      </div>
                      <div class="form-check">
                           <label class="form-check-label">
-                            <input class="form-check-input" type="checkbox" id="mimblewimble" name="mimble" value="1"> <strong>MimbleWimble</strong>
+                            <input class="form-check-input" type="checkbox" id="mimblewimble" name="mimblewimble" value="1"> <strong>MimbleWimble</strong>
                           </label>
                      </div>
                      <div class="form-check">
