@@ -15,62 +15,98 @@ class PDFGeneratorController extends Controller
      */
     public function generate(Request $request)
     {
-        //dd(request()->all());
-        // if(request('bitcoin')){ dd(request()->all()); }
-        $whitepaper = include(app_path().'/Whitepapers/template.php');
-        
-        if(request('bitcoin')){
-           $bitcoin = include(app_path().'/Whitepapers/bitcoin.php');
-           $whitepaper = array_merge_recursive($whitepaper, $bitcoin);
-        }
-        if(request('ethereum')){
-           $ethereum = include(app_path().'/Whitepapers/ethereum.php');
-           $whitepaper = array_merge_recursive($whitepaper, $ethereum);
-        }
-        
-        
+        $PROTOCOL = request('protocol');
+        $COIN = request('coin');
+        $EMAIL = request('email');
+
+        $whitepaper = $this->getWhitepaper($request);
+
+
         $name = request('name');
         if (empty(request('name'))) { $name = 'Anonymous'; }
 
         $title = $this->titleGenerator($request);
-        
+
+
 
         $pdf = new BlockchainPDF();
+        $pdf->SetFillColor(243);
         $pdf->setTitle(request('protocol'));
         $pdf->AddPage();
 
-        $pdf->CoverPage($name, request('email'), request('protocol'), $title);
+        $pdf->CoverPage($name, $EMAIL, $PROTOCOL, $title);
 
         $pdf->SetFont('Times', '', 12);
-        
+
         foreach($whitepaper as $section => $content){
            $pdf->Ln(6); // add spacing above section titles
            $pdf->SetFont('Times', 'B', 14); // make the font bigger and bold
-           if(!empty($content)){ $pdf->Cell(0, 6, $section, 0, 1, 'L'); } // print section title, ignore sections without content
+           if(!empty($content)){ $pdf->Cell(0, 6, $this->keywordReplace($section, $PROTOCOL, $COIN), 0, 1, 'L'); } // print section title, ignore sections without content
            $pdf->SetFont('Times', '', 12); // change font back to normal
-           
+
            foreach($content as $paragraphs => $paragraph){
              if(is_array($paragraph)){ // paragraph is code or img
                 if(isset($paragraph['img'])){ // it's an image
+                   $pdf->Ln(6); // add spacing
                    $pdf->Image(getcwd().$paragraph['img']);
+                   $pdf->Ln(6); // add spacing
                 }
-                // if(isset($paragraph['code'])){ } // if code is set
+                if(isset($paragraph['code'])){
+                   $pdf->SetFont('Courier', '', 12); // change the font to courier
+                   $pdf->Ln(6); // add spacing above section titles
+                   $pdf->MultiCell(0, 6, $paragraph['code'], 0, 'L', true);
+                   $pdf->Ln(6); // add spacing above section titles
+                   $pdf->SetFont('Times', '', 12);
+                }
              } else {
-                $pdf->MultiCell(0, 6, $paragraph, 0, 'J'); // print the paragraph
+                if($section == 'References'){
+                   $pdf->MultiCell(0, 6, $paragraph, 0, 'L'); // print the paragraph
+                } else {
+                   $pdf->MultiCell(0, 6, $this->keywordReplace($paragraph, $PROTOCOL, $COIN), 0, 'J'); // print the paragraph
+                }
+                
              }
           }
         }
-        
-             
-        
+
+
+
 
         $pdf->Output();
 
     }
-    
+
+    protected function keywordReplace($string, $PROTOCOL, $COIN){
+      $search  = array('_PROTOCOL_', '_COIN_');
+      $replace = array($PROTOCOL, $COIN);
+      return str_replace($search, $replace, $string);
+   }
+
+    protected function getWhitepaper(Request $request){
+
+      $whitepaper = include(app_path().'/Whitepapers/template.php');
+
+      if(request('bitcoin')){
+         $bitcoin = include(app_path().'/Whitepapers/bitcoin.php');
+         $whitepaper = array_merge_recursive($whitepaper, $bitcoin);
+      }
+      if(request('ripple')){ }
+      if(request('ethereum')){
+         $ethereum = include(app_path().'/Whitepapers/ethereum.php');
+         $whitepaper = array_merge_recursive($whitepaper, $ethereum);
+      }
+      if(request('cryptonote')){ }
+      if(request('mimblewimble')){ }
+      if(request('lightning')){ }
+      if(request('tumblebit')){ }
+
+      return $whitepaper;
+
+    }
+
     protected function titleGenerator(Request $request){
       $defaultTitle = 'Secure Untrusted Anonymous Decentralised Generalised One-time Ring Signature Peer-to-Peer Scalable Off-Chain Untraceable Electronic Instant Cash System and MimbleWimble Transaction Ledger Consensus Algorithm Payment Hub';
-      
+
       if(empty(request('bitcoin'))){
          $words = array("Peer-to-Peer ", "Electronic ", "Cash ", "System ");
          $defaultTitle = str_replace($words, "", $defaultTitle);
@@ -102,16 +138,16 @@ class PDFGeneratorController extends Controller
       if(empty(request('ripple')) && empty(request('tumblebit')) && empty(request('mimblewimble')) && empty(request('ethereum'))){
          $defaultTitle = str_replace(" and", "", $defaultTitle);
       }
-      if(empty(request('bitcoin')) && 
-         empty(request('ripple')) && 
-         empty(request('cryptonote')) && 
-         empty(request('tumblebit')) && 
-         empty(request('lightning')) && 
-         empty(request('mimblewimble')) && 
+      if(empty(request('bitcoin')) &&
+         empty(request('ripple')) &&
+         empty(request('cryptonote')) &&
+         empty(request('tumblebit')) &&
+         empty(request('lightning')) &&
+         empty(request('mimblewimble')) &&
          empty(request('ethereum'))){
          $defaultTitle = 'This paper contains my complete knowledge of the Blockchain';
       }
-      
+
       return $defaultTitle;
    }
 
