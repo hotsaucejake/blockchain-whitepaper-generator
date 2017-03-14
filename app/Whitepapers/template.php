@@ -126,5 +126,15 @@ return [
       16 => "Koinster, \"White Paper Generator,\" http://whitepaper.koinster.com, 2017.",
       17 => "",
    ],
+   
+   'Donate' => [
+      0 => "Feel free to support this project by donating Bitcoin here:",
+      1 => [
+         'img' => "/img/donate.png",
+      ],
+      2 => [
+         'code' => "1MUnEgxuMykj6z6rKnpozm8rCWpqdpSjen",
+      ],
+   ]
 
 ];
