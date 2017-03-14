@@ -64,7 +64,7 @@ class PDFGeneratorController extends Controller
                 } else {
                    $pdf->MultiCell(0, 6, $this->keywordReplace($paragraph, $PROTOCOL, $COIN), 0, 'J'); // print the paragraph
                 }
-                
+
              }
           }
         }
@@ -98,12 +98,18 @@ class PDFGeneratorController extends Controller
          $ethereum = include(app_path().'/Whitepapers/ethereum.php');
          $whitepaper = array_merge_recursive($whitepaper, $ethereum);
       }
-      if(request('cryptonote')){ }
+      if(request('cryptonote')){
+         $cryptonote = include(app_path().'/Whitepapers/cryptonote.php');
+         $whitepaper = array_merge_recursive($whitepaper, $cryptonote);
+      }
       if(request('mimblewimble')){
          $mimblewimble = include(app_path().'/Whitepapers/mimblewimble.php');
          $whitepaper = array_merge_recursive($whitepaper, $mimblewimble);
       }
-      if(request('lightning')){ }
+      if(request('lightning')){
+         $lightning = include(app_path().'/Whitepapers/lightning.php');
+         $whitepaper = array_merge_recursive($whitepaper, $lightning);
+      }
       if(request('tumblebit')){ }
 
       return $whitepaper;

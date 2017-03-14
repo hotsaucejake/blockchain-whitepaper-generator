@@ -20,13 +20,37 @@ return [
    
    'Formal Consensus Goals' => [],
    
+   'Irregular emission' => [],
+   
+   'Hardcoded constants' => [],
+   
+   'Bulky scripts' => [],
+   
+   'The _PROTOCOL_ Technology' => [],
+   
    '_PROTOCOL_ Consensus Algorithm' => [],
+   
+   'Elliptic curve parameters' => [],
+   
+   'Terminology' => [],
+   
+   'Unlinkable payments' => [],
+   
+   'One-time ring signatures' => [],
+   
+   'Standard _PROTOCOL_ transaction' => [],
+   
+   'Egalitarian Proof-of-work' => [],
    
    'Definition' => [],
 
    'Transactions' => [],
    
    'Confidential Transactions and OWAS' => [],
+   
+   'Traceability of Transactions' => [],
+   
+   'Untraceable Transactions' => [],
    
    'Merging Transactions Across Blocks' => [],
 
@@ -85,6 +109,18 @@ return [
    'Currency And Issuance' => [],
 
    'Mining Centralization' => [],
+   
+   'The proposed algorithm' => [],
+   
+   'Smooth emission' => [],
+   
+   'Difficulty' => [],
+   
+   'Size limits' => [],
+   
+   'Excess size penalty' => [],
+   
+   'Transaction scripts' => [],
 
    'Scalability' => [],
    
@@ -97,6 +133,10 @@ return [
    'Simulation Code' => [],
 
    'Calculations' => [],
+   
+   'Related works' => [],
+   
+   'Literature review' => [],
    
    'Discussion' => [],
    
