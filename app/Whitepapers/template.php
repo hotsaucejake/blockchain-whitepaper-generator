@@ -1,7 +1,7 @@
 <?php
 
 return [
-
+   
    'Abstract' => [],
 
    'Introduction' => [],
@@ -9,6 +9,20 @@ return [
    'History' => [],
 
    'Bitcoin As A State Transition System' => [],
+   
+   'Definitions, Formalization and Previous Work' => [],
+   
+   '_PROTOCOL_ Protocol Components' => [],
+   
+   'Formalization' => [],
+   
+   'Existing Consensus Algorithms' => [],
+   
+   'Formal Consensus Goals' => [],
+   
+   '_PROTOCOL_ Consensus Algorithm' => [],
+   
+   'Definition' => [],
 
    'Transactions' => [],
    
@@ -73,8 +87,18 @@ return [
    'Mining Centralization' => [],
 
    'Scalability' => [],
+   
+   'Correctness' => [],
+   
+   'Agreement' => [],
+   
+   'Utility' => [],
+   
+   'Simulation Code' => [],
 
    'Calculations' => [],
+   
+   'Discussion' => [],
    
    'Questions and Intuition' => [],
    

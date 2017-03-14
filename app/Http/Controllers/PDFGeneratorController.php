@@ -54,7 +54,7 @@ class PDFGeneratorController extends Controller
                 if(isset($paragraph['code'])){
                    $pdf->SetFont('Courier', '', 12); // change the font to courier
                    $pdf->Ln(6); // add spacing above section titles
-                   $pdf->MultiCell(0, 6, $paragraph['code'], 0, 'L', true);
+                   $pdf->MultiCell(0, 6, $this->keywordReplace($paragraph['code'], $PROTOCOL, $COIN), 0, 'L', true);
                    $pdf->Ln(6); // add spacing above section titles
                    $pdf->SetFont('Times', '', 12);
                 }
@@ -90,7 +90,10 @@ class PDFGeneratorController extends Controller
          $bitcoin = include(app_path().'/Whitepapers/bitcoin.php');
          $whitepaper = array_merge_recursive($whitepaper, $bitcoin);
       }
-      if(request('ripple')){ }
+      if(request('ripple')){
+         $ripple = include(app_path().'/Whitepapers/ripple.php');
+         $whitepaper = array_merge_recursive($whitepaper, $ripple);
+      }
       if(request('ethereum')){
          $ethereum = include(app_path().'/Whitepapers/ethereum.php');
          $whitepaper = array_merge_recursive($whitepaper, $ethereum);
