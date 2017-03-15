@@ -1,7 +1,7 @@
 <?php
 
 return [
-   
+
    'Abstract' => [],
 
    'Introduction' => [],
@@ -9,49 +9,49 @@ return [
    'History' => [],
 
    'Bitcoin As A State Transition System' => [],
-   
+
    'Definitions, Formalization and Previous Work' => [],
-   
+
    '_PROTOCOL_ Protocol Components' => [],
-   
+
    'Formalization' => [],
-   
+
    'Existing Consensus Algorithms' => [],
-   
+
    'Formal Consensus Goals' => [],
-   
+
    'Irregular emission' => [],
-   
+
    'Hardcoded constants' => [],
-   
+
    'Bulky scripts' => [],
-   
+
    'The _PROTOCOL_ Technology' => [],
-   
+
    '_PROTOCOL_ Consensus Algorithm' => [],
-   
+
    'Elliptic curve parameters' => [],
-   
+
    'Terminology' => [],
-   
+
    'Unlinkable payments' => [],
-   
+
    'One-time ring signatures' => [],
-   
+
    'Standard _PROTOCOL_ transaction' => [],
-   
+
    'Egalitarian Proof-of-work' => [],
-   
+
    'Definition' => [],
 
    'Transactions' => [],
-   
+
    'Confidential Transactions and OWAS' => [],
-   
+
    'Traceability of Transactions' => [],
-   
+
    'Untraceable Transactions' => [],
-   
+
    'Merging Transactions Across Blocks' => [],
 
    'Timestamp Server' => [],
@@ -109,39 +109,127 @@ return [
    'Currency And Issuance' => [],
 
    'Mining Centralization' => [],
-   
+
    'The proposed algorithm' => [],
-   
+
    'Smooth emission' => [],
-   
+
    'Difficulty' => [],
-   
+
    'Size limits' => [],
-   
+
    'Excess size penalty' => [],
-   
+
    'Transaction scripts' => [],
 
    'Scalability' => [],
-   
+
+   'The Bitcoin Blockchain Scalability Problem' => [],
+
+   'A Network of Micropayment Channels Can Solve Scalability' => [],
+
+   'Micropayment Channels Do Not Require Trust' => [],
+
+   'A Network of Channels' => [],
+
+   'Bidirectional Payment Channels' => [],
+
+   'The Problem of Blame in Channel Creation' => [],
+
+   'Creating an Unsigned Funding Transaction' => [],
+
+   'Spending from an Unsigned Transaction' => [],
+
+   'Commitment Transactions: Unenforcible Construction' => [],
+
+   'Commitment Transactions: Ascribing Blame' => [],
+
+   'Creating a Channel with Contract Revocation' => [],
+
+   'Sequence Number Maturity' => [],
+
+   'Timestop' => [],
+
+   'Revocable Commitment Transactions' => [],
+
+   'Redeeming Funds from the Channel: Cooperative Counterparties' => [],
+
+   'Creating a new Commitment Transaction and Revoking Prior Commitments' => [],
+
+   'Process for Creating Revocable Commitment Transactions' => [],
+
+   'Cooperatively Closing Out a Channel' => [],
+
+   'Bidirectional Channel Implications and Summary' => [],
+
+   'Hashed Timelock Contract (HTLC)' => [],
+
+   'Non-revocable HTLC Construction' => [],
+
+   'Off-chain Revocable HTLC' => [],
+
+   'HTLC when the Sender Broadcasts the Commitment Transaction' => [],
+
+   'HTLC when the Receiver Broadcasts the Commitment Transaction' => [],
+
+   'HTLC Off-chain Termination' => [],
+
+   'HTLC Formation and Closing Order' => [],
+
+   'Key Storage' => [],
+
+   'Blockchain Transaction Fees for Bidirectional Channels' => [],
+
+   'Pay to Contract' => [],
+
+   'The _PROTOCOL_ Network' => [],
+
+   'Decrementing Timelocks' => [],
+
+   'Payment Amount' => [],
+
+   'Clearing Failure and Rerouting' => [],
+
+   'Payment Routing' => [],
+
    'Correctness' => [],
-   
+
    'Agreement' => [],
-   
+
    'Utility' => [],
-   
+
    'Simulation Code' => [],
 
+   'Risks' => [],
+
+   'Improper Timelocks' => [],
+
+   'Forced Expiration Spam' => [],
+
+   'Coin Theft via Cracking' => [],
+
+   'Data Loss' => [],
+
+   'Forgetting to Broadcast the Transaction in Time' => [],
+
+   'Inability to Make Necessary Soft-Forks' => [],
+
+   'Colluding Miner Attacks' => [],
+
+   'Block Size Increases and Consensus' => [],
+
+   'Use Cases' => [],
+
    'Calculations' => [],
-   
+
    'Related works' => [],
-   
+
    'Literature review' => [],
-   
+
    'Discussion' => [],
-   
+
    'Questions and Intuition' => [],
-   
+
    'Future Research' => [],
 
    'Conclusion' => [],
@@ -166,7 +254,7 @@ return [
       16 => "Koinster, \"White Paper Generator,\" http://whitepaper.koinster.com, 2017.",
       17 => "",
    ],
-   
+
    'Donate' => [
       0 => "Feel free to support this project by donating Bitcoin here:",
       1 => [

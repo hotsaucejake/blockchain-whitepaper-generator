@@ -203,11 +203,13 @@
                            <input class="form-check-input" type="checkbox" id="lightning" name="lightning" value="1"> <strong>The Bitcoin Lightning Network:</strong> Scalable Off-Chain Instant Payments
                          </label>
                     </div>
+                    <!-- coming soon
                     <div class="form-check">
                         <label class="form-check-label">
                           <input class="form-check-input" type="checkbox" id="tumblebit" name="tumblebit" value="1"> <strong>TumbleBit:</strong> An Untrusted Bitcoin-Compatible Anonymous Payment Hub
                         </label>
                    </div>
+                -->
                      
                      
                      
